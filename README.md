@@ -7,3 +7,5 @@ in this folder you can find different machine learning models for different goal
 * LR - Linear Regression
 
 * Introduction to machine learning for project management - Coursera learning
+
+* Exploratory Data Analysis with Seaborn - Coursera learning
