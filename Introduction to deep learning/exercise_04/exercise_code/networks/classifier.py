@@ -63,15 +63,23 @@ class Classifier(Network):
         #       The function is made up of TWO functions: Affine and sigmoid.  #
         #       The sigmoid is applied to the result of the affine step.       #
         ########################################################################
+        #print(X)
+        #print(self.W)
+        z = np.dot(X, self.W)
+        z = self.sigmoid(z)
+        
+        # Store variables for backward pass
+        self.cache = (X, z)
 
+        
 
         pass
 
         ########################################################################
         #                           END OF YOUR CODE                           #
         ########################################################################
-
-        return z 
+        return z
+        #return z 
 
     def backward(self, dout):
         """
@@ -102,7 +110,10 @@ class Classifier(Network):
         # Hint 3: The argument "dout" stands for the upstream gradeint to this #
         # layer.                                                               #
         ########################################################################
+        X, z = self.cache
 
+        dz = dout * z * (1 - z)
+        dW = np.dot(X.T, dz)
 
         pass
 
@@ -125,7 +136,7 @@ class Classifier(Network):
         # Implement the sigmoid function over the input x. Return "out".       #
         # Note: The sigmoid() function operates element-wise.                  #
         ########################################################################
-
+        out= 1 / (1 + np.exp(-x))
 
         pass
 

@@ -102,7 +102,18 @@ class Solver(object):
         #   Hint 2: Don't forget the order of operations: forward, loss,       #
         #   backward.                                                          #
         ########################################################################
+        # Forward pass
+        predictions = model.forward(X_train)
 
+        # Compute loss
+        loss = loss_func(predictions, y_train)
+
+        # Backward pass
+        grad_loss = loss_func.backward(predictions, y_train)
+        
+
+        # Gradient descent step
+        opt.step(model.backward(grad_loss))
 
         pass
 
